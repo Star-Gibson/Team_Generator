@@ -15,80 +15,116 @@ const render = require("./lib/htmlRenderer");
 let teamArray = [];
 
 addMember();
-function addMember(){
-    inquirer.prompt([{   
+
+//Need to add a way for user to continuously add employees until finished.
+function addMember() {
+    inquirer.prompt([{
         type: 'list',
         message: "What is the employee's role within the company?",
         name: 'role',
         choices: ['Manager', 'Engineer', 'Intern']
-        }]).then(function({role}){
-            if(role === 'Manager'){
-                addManager();
-            };
-            if(role === 'Engineer'){
-                addEngineer();
-            };
-            if (role === 'Intern'){
-                addIntern();
-            };
-        })
-}
+    }]).then(function ({ role }) {
+        if (role === 'Manager') { 
+            addManager(); //Calls addManager
+        };
+        if (role === 'Engineer') {
+            addEngineer(); //Calls addEngineer
+        };
+        if (role === 'Intern') {
+            addIntern(); //Calls addIntern
+        };
+    })
+};
 
 //Manager Questionnaire
-function addManager(){
+function addManager() {
     inquirer.prompt([
-        {   type: 'input',
-            message: "Please enter the employee's name.", 
+        {
+            type: 'input',
+            message: "Please enter the employee's name.",
             name: 'name'
         },
-        {   type: 'input',
-            message: "Please enter the employee's company ID.", 
+        {
+            type: 'input',
+            message: "Please enter the employee's company ID.",
             name: 'id'
         },
-        {   type: 'input',
+        {
+            type: 'input',
             message: "Please enter the employee's email.",
             name: 'email'
-        },  
-        {   type: 'input',
-                message: "What is the employee's office number?",
-                name: 'officeNumber' 
         },
-        ]).then((manager) => {
-            const newManager = new Manager(manager.name, manager.id, manager.email, manager.officeNumber)
-            console.log(newManager);
-        })
+        {
+            type: 'input',
+            message: "What is the employee's office number?",
+            name: 'officeNumber'
+        },
+    ]).then((manager) => {
+        const newManager = new Manager(manager.name, manager.id, manager.email, manager.officeNumber)
+        console.log(newManager); //Works
+    }
+    )
 }
- 
 
-// //Arrays for Role Specific Questions
-// //Manager
-// const managerQuestions = 
-// [
-//     {   type: 'input',
-//         message: "What is the employee's office number?",
-//         name: 'office' 
-//     }
-// ];
+//Engineer Questionnaire
+function addEngineer() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: "Please enter the employee's name.",
+            name: 'name'
+        },
+        {
+            type: 'input',
+            message: "Please enter the employee's company ID.",
+            name: 'id'
+        },
+        {
+            type: 'input',
+            message: "Please enter the employee's email.",
+            name: 'email'
+        },
+        {
+            type: 'input',
+            message: "What is the employee's Github username?",
+            name: 'github'
+        },
+    ]).then((engineer) => {
+        const newEngineer = new Engineer(engineer.name, engineer.id, engineer.email, engineer.github)
+        console.log(newEngineer); // Works
+     }
+    )
+}
 
-// //Engineer
-// const engQuestions = 
-// [
-//     {   type: 'input',
-//         message: "What is the employee's Github username?",
-//         name: 'github' 
-//     }
-// ];
-
-// //Intern 
-// const internQuestions = 
-// [
-//     {   type: 'input',
-//         message: 'What University is the employee currently attending?',
-//         name: 'school'
-//     }
-// ];
-
-// inquirer.prompt([]);
+//Intern Questionnaire
+function addIntern() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: "Please enter the employee's name.",
+            name: 'name'
+        },
+        {
+            type: 'input',
+            message: "Please enter the employee's company ID.",
+            name: 'id'
+        },
+        {
+            type: 'input',
+            message: "Please enter the employee's email.",
+            name: 'email'
+        },
+        {
+            type: 'input',
+            message: 'What University is the employee currently attending?',
+            name: 'school'
+        },
+    ]).then((intern) => {
+        const newIntern = new Intern(intern.name, intern.id, intern.email, intern.school)
+        console.log(newIntern); //Works
+        }
+    )
+}
 
 
 // Write code to use inquirer to gather information about the development team members,
