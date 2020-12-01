@@ -1,14 +1,70 @@
+//Constructors
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+
+//Dependencies
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-
 const render = require("./lib/htmlRenderer");
+
+//Arrays
+let teamArray = [];
+
+//Questions:
+const questions = 
+[
+    {   type: 'input',
+        message: "Please enter the employee's name.", 
+        name: 'name'
+    },
+    {   type: 'input',
+        message: "Please enter the employee's company ID.", 
+        name: 'id'
+    },
+    {   type: 'input',
+        message: "Please enter the employee's email.",
+        name: 'email'
+    },  
+    {   type: 'input',
+        message: "What is the employee's role within the company?",
+        name: 'role'
+
+    }
+];
+
+//Arrays for Role Specific Questions
+//Manager
+const managerQuestions = 
+[
+    {   type: 'input',
+        message: "What is the employee's office number?",
+        name: 'office' 
+    }
+];
+
+//Engineer
+const engQuestions = 
+[
+    {   type: 'input',
+        message: "What is the employee's Github username?",
+        name: 'github' 
+    }
+];
+
+//Intern 
+const internQuestions = 
+[
+    {   type: 'input',
+        message: 'What University is the employee currently attending?',
+        name: 'school'
+    }
+];
+
+inquirer.prompt([]);
 
 
 // Write code to use inquirer to gather information about the development team members,
