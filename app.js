@@ -14,57 +14,81 @@ const render = require("./lib/htmlRenderer");
 //Arrays
 let teamArray = [];
 
-//Questions:
-const questions = 
-[
-    {   type: 'input',
-        message: "Please enter the employee's name.", 
-        name: 'name'
-    },
-    {   type: 'input',
-        message: "Please enter the employee's company ID.", 
-        name: 'id'
-    },
-    {   type: 'input',
-        message: "Please enter the employee's email.",
-        name: 'email'
-    },  
-    {   type: 'input',
+addMember();
+function addMember(){
+    inquirer.prompt([{   
+        type: 'list',
         message: "What is the employee's role within the company?",
-        name: 'role'
+        name: 'role',
+        choices: ['Manager', 'Engineer', 'Intern']
+        }]).then(function({role}){
+            if(role === 'Manager'){
+                addManager();
+            };
+            if(role === 'Engineer'){
+                addEngineer();
+            };
+            if (role === 'Intern'){
+                addIntern();
+            };
+        })
+}
 
-    }
-];
+//Manager Questionnaire
+function addManager(){
+    inquirer.prompt([
+        {   type: 'input',
+            message: "Please enter the employee's name.", 
+            name: 'name'
+        },
+        {   type: 'input',
+            message: "Please enter the employee's company ID.", 
+            name: 'id'
+        },
+        {   type: 'input',
+            message: "Please enter the employee's email.",
+            name: 'email'
+        },  
+        {   type: 'input',
+                message: "What is the employee's office number?",
+                name: 'officeNumber' 
+        },
+        ]).then((manager) => {
+            const newManager = new Manager(manager.name, manager.id, manager.email, manager.officeNumber)
+            console.log(newManager);
+        })
+}
+ 
 
-//Arrays for Role Specific Questions
-//Manager
-const managerQuestions = 
-[
-    {   type: 'input',
-        message: "What is the employee's office number?",
-        name: 'office' 
-    }
-];
+// //Arrays for Role Specific Questions
+// //Manager
+// const managerQuestions = 
+// [
+//     {   type: 'input',
+//         message: "What is the employee's office number?",
+//         name: 'office' 
+//     }
+// ];
 
-//Engineer
-const engQuestions = 
-[
-    {   type: 'input',
-        message: "What is the employee's Github username?",
-        name: 'github' 
-    }
-];
+// //Engineer
+// const engQuestions = 
+// [
+//     {   type: 'input',
+//         message: "What is the employee's Github username?",
+//         name: 'github' 
+//     }
+// ];
 
-//Intern 
-const internQuestions = 
-[
-    {   type: 'input',
-        message: 'What University is the employee currently attending?',
-        name: 'school'
-    }
-];
+// //Intern 
+// const internQuestions = 
+// [
+//     {   type: 'input',
+//         message: 'What University is the employee currently attending?',
+//         name: 'school'
+//     }
+// ];
 
-inquirer.prompt([]);
+// inquirer.prompt([]);
 
 
 // Write code to use inquirer to gather information about the development team members,
