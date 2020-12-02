@@ -16,9 +16,6 @@ let teamArray = [];
 
 addMember();
 
-
-
-
 function addMember() {
     inquirer.prompt([{
         type: 'list',
@@ -38,7 +35,7 @@ function addMember() {
     })
 };
 
-//Manager Questionnaire
+//Manager Questionnaire/Function
 function addManager() {
     inquirer.prompt([
         {
@@ -83,7 +80,7 @@ function addManager() {
     )
 }
 
-//Engineer Questionnaire
+//Engineer Questionnaire/Function
 function addEngineer() {
     inquirer.prompt([
         {
@@ -127,7 +124,7 @@ function addEngineer() {
     )
 }
 
-//Intern Questionnaire
+//Intern Questionnaire/Function
 function addIntern() {
     inquirer.prompt([
         {
