@@ -7,12 +7,17 @@ The Team Generator is a CLI application run using node.JS that takes in the user
 When utilizing this application be sure to first run a `npm install` to ensure you have all the necessary dependencies.
 
 ## Table of Contents
+  * [Screenshots](#screenshot)
   * [Installation](#installation)
   * [Usage](#usage)
   * [Test](#test)
   * [Credits](#credits)
   * [License](#license)
   * [Questions](#questions)
+
+## Screenshots
+![_Users_star_Desktop_Bootcamp_Homework_Team_Generator_output_team html](https://user-images.githubusercontent.com/72622031/100932454-e164b600-34b9-11eb-9e8c-6b1daac8ab62.png)
+
      
 ## Installation
 * Clone the repository.
