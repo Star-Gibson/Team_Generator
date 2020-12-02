@@ -1,0 +1,17 @@
+.team-heading{
+    background:darkorange;
+    color: white;   
+}
+
+.card-header{
+    background:darkorange;
+    color: white;
+}
+
+.card-body{
+    background:darkorange;   
+}
+
+ul.list-group{
+    color: black
+}
