@@ -17,6 +17,8 @@ let teamArray = [];
 addMember();
 
 
+
+
 function addMember() {
     inquirer.prompt([{
         type: 'list',
@@ -73,8 +75,11 @@ function addManager() {
         if(manager.addition === 'yes'){
             addMember();
         }
+        else{
+            renderTeam();
+        }
         
-    }
+        }
     )
 }
 
@@ -113,7 +118,12 @@ function addEngineer() {
         console.log(teamArray);
         if(engineer.addition === 'yes'){
             addMember();
-        }}
+        }
+        else{
+            renderTeam();
+        }
+    
+        }
     )
 }
 
@@ -153,9 +163,19 @@ function addIntern() {
         if(intern.addition === 'yes'){
             addMember();
         }
+        else{
+            renderTeam();
+        }
+        
         }
     )
 }
+//Render Team Function
+function renderTeam() {
+    const fullTeam = render(teamArray);
+    fs.writeFile(outputPath, fullTeam, (err) => 
+    err ? console.log(err) : console.log("success!"))
+ }
 
 
 // Write code to use inquirer to gather information about the development team members,
