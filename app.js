@@ -16,7 +16,7 @@ let teamArray = [];
 
 addMember();
 
-//Need to add a way for user to continuously add employees until finished.
+
 function addMember() {
     inquirer.prompt([{
         type: 'list',
@@ -59,9 +59,21 @@ function addManager() {
             message: "What is the employee's office number?",
             name: 'officeNumber'
         },
+        { type: 'list',
+            message: "Would you like to add additional employees?",
+            name: 'addition',
+            choices: ['yes', 'no']
+        }, 
     ]).then((manager) => {
         const newManager = new Manager(manager.name, manager.id, manager.email, manager.officeNumber)
         console.log(newManager); //Works
+        teamArray.push(newManager);//push to teamArray
+        console.log(teamArray);
+
+        if(manager.addition === 'yes'){
+            addMember();
+        }
+        
     }
     )
 }
@@ -89,10 +101,19 @@ function addEngineer() {
             message: "What is the employee's Github username?",
             name: 'github'
         },
+        { type: 'list',
+            message: "Would you like to add another employee?",
+            name: 'addition',
+            choices: ['yes', 'no']
+        } 
     ]).then((engineer) => {
         const newEngineer = new Engineer(engineer.name, engineer.id, engineer.email, engineer.github)
         console.log(newEngineer); // Works
-     }
+        teamArray.push(newEngineer);//Push to teamArray
+        console.log(teamArray);
+        if(engineer.addition === 'yes'){
+            addMember();
+        }}
     )
 }
 
@@ -119,9 +140,19 @@ function addIntern() {
             message: 'What University is the employee currently attending?',
             name: 'school'
         },
+        { 
+            type: 'list',
+            message: "Would you like to add another employee?",
+            name: 'addition',
+            choices: ['yes', 'no']
+        } 
     ]).then((intern) => {
         const newIntern = new Intern(intern.name, intern.id, intern.email, intern.school)
         console.log(newIntern); //Works
+        teamArray.push(newIntern); //Push to teamArray
+        if(intern.addition === 'yes'){
+            addMember();
+        }
         }
     )
 }
